@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JEE ARC — Command Center</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+ <div><h1>JEE ARC<span>COMMAND CENTER</span></h1><p class="sub">Don't chase hours. Finish the mission.</p></div>
+ <div class="acts"><button class="btn cy" id="bRem">🔔 Enable Reminders</button><button class="btn ghost" id="bTest">Test Reminder</button><button class="btn ghost" id="bSet">⚙ Settings</button></div>
+</header>
+
+<section class="card hero" id="hero">
+ <div class="eyebrow"><span>TODAY'S MISSION</span><em id="date"></em></div>
+ <h3>Don't chase hours.<br>Finish the mission.</h3>
+ <p id="hmsg"></p>
+ <div class="pl"><span>Today's Completion</span><span id="hpct">0%</span></div>
+ <div class="bar"><div class="fill" id="hfill"></div></div>
+ <div id="mission"><b>🔥 MISSION COMPLETE</b>Today's mission complete. You earned your rest.</div>
+</section>
+
+<section class="stats" id="stats"></section>
+
+<div class="grid">
+ <div class="col">
+  <section class="card">
+   <h2>🎯 TODAY'S GOALS</h2>
+   <div class="form">
+    <input type="text" id="gIn" maxlength="120" placeholder="Add a goal — e.g. Physics: 30 questions">
+    <select id="gCat"><option value="">No category</option><option>Physics</option><option>Chemistry</option><option>Mathematics</option><option>School</option><option>Revision</option><option>Health</option><option>Personal</option></select>
+    <label class="chk"><input type="checkbox" id="gRec">Daily</label>
+    <button class="btn" id="gAdd">+ Add</button>
+   </div>
+   <ul id="goals"></ul>
+  </section>
+  <section class="card">
+   <h2>⏰ Your Timetable</h2>
+   <div class="tabs" id="tabs"><button data-m="school">🏫 School Day</button><button data-m="normal">🏠 Normal Day</button></div>
+   <div class="wk" id="wk"></div>
+   <label class="chk" style="margin:4px 0 6px"><input type="checkbox" id="wkAuto"> Auto-switch timetable by day</label>
+   <p class="sub" id="wkInfo" style="margin:0 0 12px"></p>
+   <div class="form">
+    <input type="time" id="tTime" value="06:00">
+    <input type="text" id="tIn" maxlength="80" placeholder="Activity">
+    <button class="btn" id="tAdd">+ Add</button>
+   </div>
+   <ul id="tt"></ul>
+   <div style="margin-top:12px"><button class="btn ghost sm" id="tRes">Restore default timetable</button></div>
+  </section>
+ </div>
+ <div class="col">
+  <section class="card">
+   <h2>⏱ FOCUS TIMER</h2>
+   <div class="ring" id="ring"><svg viewBox="0 0 120 120"><defs><linearGradient id="gr"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><circle class="bg" cx="60" cy="60" r="54"/><circle class="pg" id="pg" cx="60" cy="60" r="54" stroke-dasharray="339.29" stroke-dashoffset="0"/></svg>
+    <div class="ringtx"><b id="tmr">25:00</b><small id="tlab">DEEP WORK</small></div></div>
+   <div class="tbtn"><button class="btn" id="fStart">Start Focus</button><button class="btn ghost" id="fPause">Pause</button><button class="btn ghost" id="fResume">Resume</button><button class="btn ghost" id="fReset">Reset</button><button class="btn cy" id="fBreak">Break 5m</button></div>
+   <div class="durs"><label>Focus <input type="number" id="dF" min="1" max="180" inputmode="numeric"> min</label><label>Break <input type="number" id="dB" min="1" max="60" inputmode="numeric"> min</label></div>
+  </section>
+  <section class="card">
+   <h2>⚡ MOTIVATION</h2>
+   <div class="quote" id="quote"></div>
+   <p class="tip" id="tip"></p>
+   <button class="btn" id="push">Give Me a Push ⚡</button>
+  </section>
+ </div>
+</div>
+</div>
+
+<div id="toasts" aria-live="polite"></div>
+
+<div class="modal" id="modal"><div class="sheet">
+ <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><h2 style="margin:0">⚙ Settings</h2><button class="x" id="mClose" aria-label="Close">✕</button></div>
+ <div class="set"><h4>NOTIFICATIONS</h4>
+  <div class="srow">Browser reminders<button class="btn sm" id="sRem"></button></div>
+  <div class="srow">Send a test<button class="btn ghost sm" id="sTest">Test Reminder</button></div></div>
+ <div class="set"><h4>SOUND</h4>
+  <div class="srow">🔊 Notification Sound<button class="btn sm" id="sSnd"></button></div>
+  <div class="srow">Volume <span id="vVal"></span><input type="range" id="sVol" min="0" max="100"></div></div>
+ <div class="set"><h4>APPEARANCE</h4>
+  <div class="srow">Dark mode<button class="btn sm" id="sDark"></button></div>
+  <div class="srow">Accent intensity<input type="range" id="sAcc" min="20" max="100"></div></div>
+ <div class="set"><h4>DATA</h4>
+  <div class="btns"><button class="btn ghost sm" id="dExp">Export data</button><button class="btn ghost sm" id="dImp">Import data</button><button class="btn ghost sm" id="dRst">Reset today's goals</button><button class="btn ghost sm" id="dTT">Restore active timetable</button><button class="btn danger sm" id="dClr">Clear all data</button></div>
+  <input type="file" id="file" accept="application/json,.json" hidden></div>
+</div></div>
+
+<script src="script.js"></script>
+</body>
+</html>
